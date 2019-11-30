@@ -1,6 +1,6 @@
 #include "Application.h"
 
-namespace Flex {
+namespace FE {
 
 	Application::Application()
 	{

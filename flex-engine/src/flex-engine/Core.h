@@ -1,11 +1,11 @@
 #pragma once
 
 
-#ifdef FXE_PLATFORM_WINDOWS
-#	ifdef FXE_BUILD_DLL
-#		define FLEX_API _declspec(dllexport)
+#ifdef FE_PLATFORM_WINDOWS
+#	ifdef FE_BUILD_DLL
+#		define FE_API _declspec(dllexport)
 #	else 
-#		define FLEX_API _declspec(dllimport)
+#		define FE_API _declspec(dllimport)
 #	endif
 #else 
 #	error Flex engine supports only Widnows

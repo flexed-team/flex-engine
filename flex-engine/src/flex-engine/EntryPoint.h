@@ -1,12 +1,17 @@
 #pragma once
 
-#ifdef FXE_PLATFORM_WINDOWS
+#ifdef FE_PLATFORM_WINDOWS
 
-extern Flex::Application* Flex::CreateApplication();
+extern FE::Application* FE::CreateApplication();
 
 int main(int argc, char** argv)
 {
-	auto app = Flex::CreateApplication();
+	FE::Log::Init(); 
+	//FE_CORE_WARN("Core logger initialized!");
+	//int a = 5;
+	//FE_INFO("a equals {0}", a);
+
+	auto app = FE::CreateApplication();
 	app->Run();
 	delete app;
 }

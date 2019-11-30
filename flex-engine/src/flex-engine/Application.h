@@ -2,9 +2,9 @@
 
 #include "Core.h"
 
-namespace Flex {
+namespace FE {
 
-	class FLEX_API Application
+	class FE_API Application
 	{
 	public:
 		Application();

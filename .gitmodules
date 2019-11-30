@@ -1,0 +1,3 @@
+[submodule "flex-engine/vendor/spdlog"]
+	path = flex-engine/vendor/spdlog
+	url = https://github.com/gabime/spdlog

@@ -1,6 +1,6 @@
 #include <flex-engine.h>
 
-class Sandbox : public Flex::Application
+class Sandbox : public FE::Application
 {
 public:
 	Sandbox()
@@ -12,7 +12,7 @@ public:
 	}
 };
 
-Flex::Application* Flex::CreateApplication()
+FE::Application* FE::CreateApplication()
 {
 	return new Sandbox();
 }
