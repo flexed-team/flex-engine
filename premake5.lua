@@ -11,6 +11,11 @@ workspace "flex-engine"
 -- example : "Debug-windows-x86_64"
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"	
 
+
+
+-------------------------- PROJECTS -----------------------------
+
+
 -- Flex Engine ------------------------------- 
 project "flex-engine"
 	location "flex-engine"
@@ -47,7 +52,7 @@ project "flex-engine"
 
 		postbuildcommands
 		{	-- will copy dll from engine build dir into sandbox build dir
-			("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox")
+			("{COPY} %{cfg.buildtarget.relpath} %{wks.location}/bin/" .. outputdir .. "/Sandbox/*")
 		}
 
 
@@ -64,6 +69,79 @@ project "flex-engine"
 	filter "configurations:Dist"
 		defines "FE_DIST"
 		optimize "On"
+
+
+
+
+
+
+
+
+
+
+
+-- Flex Math ------------------------------- 
+project "flex-math"
+	location "flex-engine/vendor/flex-math"
+	kind "SharedLib"
+
+	language "C++"
+	
+	-- example : "bin/Debug-windows-x86_64/flex-math"
+	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
+	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+
+	files
+	{
+		"%{prj.location}/src/**.h",
+      "%{prj.location}/src/**.cpp",
+      "%{prj.location}/**.hint",
+	}
+
+
+	-- Windows options
+	filter "system:windows"
+		cppdialect "C++17"
+		staticruntime "On"
+		systemversion "latest"
+		
+		defines
+		{
+			"FE_PLATFORM_WINDOWS",
+			"FE_BUILD_DLL"
+		}
+
+		postbuildcommands
+		{	-- will copy dll from engine build dir into sandbox build dir
+			("{COPY} %{cfg.buildtarget.relpath} %{wks.location}/bin/" .. outputdir .. "/Sandbox/*")
+		}
+
+
+	-- General build modes options for platforms
+	filter "configurations:Debug"
+		defines "FE_DEBUG"
+		symbols "On" -- acts like -g gcc flag
+
+		
+	filter "configurations:Release"
+		defines "FE_RELEASE"
+		optimize "On"
+		
+	filter "configurations:Dist"
+		defines "FE_DIST"
+		optimize "On"
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 -- Sandox ------------------------------- 
@@ -85,12 +163,14 @@ project "Sandbox"
 	includedirs
 	{
 		"flex-engine/vendor/spdlog/include",
+		"flex-engine/vendor/flex-math/src",
 		"flex-engine/src"
 	}
 
 	links
 	{
-		"flex-engine"
+      "flex-engine",
+      "flex-math"
 	}
 
 	-- Windows options
@@ -116,4 +196,5 @@ project "Sandbox"
 		
 	filter "configurations:Dist"
 		defines "FE_DIST"
-		optimize "On"
+      optimize "On"
+      

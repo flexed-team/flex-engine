@@ -5,6 +5,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Sandbox", "Sandbox\Sandbox.
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "flex-engine", "flex-engine\flex-engine.vcxproj", "{B71D5AF2-23D3-D2E7-ACC7-CCBE187CC9EB}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "flex-math", "flex-engine\vendor\flex-math\flex-math.vcxproj", "{8B238881-F78D-3CF8-40CC-ED9DAC751A4D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -24,6 +26,12 @@ Global
 		{B71D5AF2-23D3-D2E7-ACC7-CCBE187CC9EB}.Dist|x64.Build.0 = Dist|x64
 		{B71D5AF2-23D3-D2E7-ACC7-CCBE187CC9EB}.Release|x64.ActiveCfg = Release|x64
 		{B71D5AF2-23D3-D2E7-ACC7-CCBE187CC9EB}.Release|x64.Build.0 = Release|x64
+		{8B238881-F78D-3CF8-40CC-ED9DAC751A4D}.Debug|x64.ActiveCfg = Debug|x64
+		{8B238881-F78D-3CF8-40CC-ED9DAC751A4D}.Debug|x64.Build.0 = Debug|x64
+		{8B238881-F78D-3CF8-40CC-ED9DAC751A4D}.Dist|x64.ActiveCfg = Dist|x64
+		{8B238881-F78D-3CF8-40CC-ED9DAC751A4D}.Dist|x64.Build.0 = Dist|x64
+		{8B238881-F78D-3CF8-40CC-ED9DAC751A4D}.Release|x64.ActiveCfg = Release|x64
+		{8B238881-F78D-3CF8-40CC-ED9DAC751A4D}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
