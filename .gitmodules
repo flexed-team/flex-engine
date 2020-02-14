@@ -3,7 +3,7 @@
 	url = https://github.com/gabime/spdlog
 [submodule "flex-engine/vendor/flex-render"]
 	path = flex-engine/vendor/flex-render
-	url = https://github.com/flexed-team/flex-render
+	url = https://www.github.com/flexed-team/flex-render
 [submodule "flex-math"]
-	path = flex-math
+	path = flex-engine/vendor/flex-math
 	url = https://www.github.com/flexed-team/flex-math
