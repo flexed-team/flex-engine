@@ -1,5 +1,5 @@
 #include <flex-engine.h>
-#include <flex-math.h>
+#include <matrix.h>
 
 class Sandbox : public FE::Application
 {
