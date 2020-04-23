@@ -1,3 +1,5 @@
+-- TODO: rewrite defines and links
+
 workspace "flex-engine"
 	architecture "x64"
 	
@@ -35,8 +37,13 @@ project "flex-engine"
 
 	includedirs
 	{
+		"%{prj.name}/vendor/flex-math/src",
 		"%{prj.name}/vendor/spdlog/include"
-	}
+   }
+   
+   links {
+      "flex-math"
+   }
 
 	-- Windows options
 	filter "system:windows"
@@ -47,7 +54,8 @@ project "flex-engine"
 		defines
 		{
 			"FE_PLATFORM_WINDOWS",
-			"FE_BUILD_DLL"
+         "FE_BUILD_DLL",
+         "FM_PLATFORM_WINDOWS"
 		}
 
 		postbuildcommands
@@ -107,8 +115,8 @@ project "flex-math"
 		
 		defines
 		{
-			"FE_PLATFORM_WINDOWS",
-			"FE_BUILD_DLL"
+			"FM_PLATFORM_WINDOWS",
+			"FM_BUILD_DLL"
 		}
 
 		postbuildcommands
@@ -119,16 +127,16 @@ project "flex-math"
 
 	-- General build modes options for platforms
 	filter "configurations:Debug"
-		defines "FE_DEBUG"
+		defines "FM_DEBUG"
 		symbols "On" -- acts like -g gcc flag
 
 		
 	filter "configurations:Release"
-		defines "FE_RELEASE"
+		defines "FM_RELEASE"
 		optimize "On"
 		
 	filter "configurations:Dist"
-		defines "FE_DIST"
+		defines "FM_DIST"
 		optimize "On"
 
 
@@ -181,7 +189,8 @@ project "Sandbox"
 		
 		defines
 		{
-			"FE_PLATFORM_WINDOWS"
+         "FE_PLATFORM_WINDOWS",
+         "FM_PLATFORM_WINDOWS"
 		}
 
 	-- General build modes options for platforms
