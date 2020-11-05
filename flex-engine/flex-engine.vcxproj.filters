@@ -6,25 +6,25 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\flex-engine.h" />
-    <ClInclude Include="src\flex-engine\Application.h">
+    <ClInclude Include="src\flex-engine.hpp" />
+    <ClInclude Include="src\flex-engine\application.hpp">
       <Filter>flex-engine</Filter>
     </ClInclude>
-    <ClInclude Include="src\flex-engine\Core.h">
+    <ClInclude Include="src\flex-engine\core.hpp">
       <Filter>flex-engine</Filter>
     </ClInclude>
-    <ClInclude Include="src\flex-engine\EntryPoint.h">
+    <ClInclude Include="src\flex-engine\entry_point.hpp">
       <Filter>flex-engine</Filter>
     </ClInclude>
-    <ClInclude Include="src\flex-engine\Log.h">
+    <ClInclude Include="src\flex-engine\log.hpp">
       <Filter>flex-engine</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\flex-engine\Application.cpp">
+    <ClCompile Include="src\flex-engine\application.cpp">
       <Filter>flex-engine</Filter>
     </ClCompile>
-    <ClCompile Include="src\flex-engine\Log.cpp">
+    <ClCompile Include="src\flex-engine\log.cpp">
       <Filter>flex-engine</Filter>
     </ClCompile>
   </ItemGroup>

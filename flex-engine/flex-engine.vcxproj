@@ -78,8 +78,8 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>FE_PLATFORM_WINDOWS;FE_BUILD_DLL;FM_PLATFORM_WINDOWS;FE_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>vendor\flex-math\src;vendor\spdlog\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>FE_PLATFORM_WINDOWS;FE_BUILD_DLL;FE_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>vendor\flex-math\src;vendor\flex-render\src;vendor\glm\glm;vendor\spdlog\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -98,8 +98,8 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>FE_PLATFORM_WINDOWS;FE_BUILD_DLL;FM_PLATFORM_WINDOWS;FE_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>vendor\flex-math\src;vendor\spdlog\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>FE_PLATFORM_WINDOWS;FE_BUILD_DLL;FE_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>vendor\flex-math\src;vendor\flex-render\src;vendor\glm\glm;vendor\spdlog\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -122,8 +122,8 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>FE_PLATFORM_WINDOWS;FE_BUILD_DLL;FM_PLATFORM_WINDOWS;FE_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>vendor\flex-math\src;vendor\spdlog\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>FE_PLATFORM_WINDOWS;FE_BUILD_DLL;FE_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>vendor\flex-math\src;vendor\flex-render\src;vendor\glm\glm;vendor\spdlog\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -143,20 +143,15 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="src\flex-engine.h" />
-    <ClInclude Include="src\flex-engine\Application.h" />
-    <ClInclude Include="src\flex-engine\Core.h" />
-    <ClInclude Include="src\flex-engine\EntryPoint.h" />
-    <ClInclude Include="src\flex-engine\Log.h" />
+    <ClInclude Include="src\flex-engine.hpp" />
+    <ClInclude Include="src\flex-engine\application.hpp" />
+    <ClInclude Include="src\flex-engine\core.hpp" />
+    <ClInclude Include="src\flex-engine\entry_point.hpp" />
+    <ClInclude Include="src\flex-engine\log.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\flex-engine\Application.cpp" />
-    <ClCompile Include="src\flex-engine\Log.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="vendor\flex-math\flex-math.vcxproj">
-      <Project>{8B238881-F78D-3CF8-40CC-ED9DAC751A4D}</Project>
-    </ProjectReference>
+    <ClCompile Include="src\flex-engine\application.cpp" />
+    <ClCompile Include="src\flex-engine\log.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

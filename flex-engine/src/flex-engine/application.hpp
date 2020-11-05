@@ -1,8 +1,9 @@
 #pragma once
 
-#include "Core.h"
+#include "core.hpp"
 
-namespace FE {
+namespace FE
+{
 
 	class FE_API Application
 	{
@@ -10,10 +11,10 @@ namespace FE {
 		Application();
 		virtual ~Application();
 
-		void Run();
+		void run();
 	};
 
 	/** To be defined in client */
-	Application* CreateApplication();
+	Application *create_application();
 
-}
+} // namespace FE

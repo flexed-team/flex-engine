@@ -1,6 +1,7 @@
-#include "Application.h"
+#include "application.hpp"
 
-namespace FE {
+namespace FE
+{
 
 	Application::Application()
 	{
@@ -10,7 +11,9 @@ namespace FE {
 	{
 	}
 
-	void Application::Run() {
-		while (true);
+	void Application::run()
+	{
+		while (true)
+			;
 	}
-}
+} // namespace FE

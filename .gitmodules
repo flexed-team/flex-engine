@@ -7,3 +7,6 @@
 [submodule "flex-math"]
 	path = flex-engine/vendor/flex-math
 	url = https://www.github.com/flexed-team/flex-math
+[submodule "flex-engine/vendor/glm"]
+	path = flex-engine/vendor/glm
+	url = https://github.com/g-truc/glm

@@ -1,4 +1,3 @@
--- TODO: rewrite defines and links
 
 workspace "flex-engine"
 	architecture "x64"
@@ -32,18 +31,17 @@ project "flex-engine"
 	files
 	{
 		"%{prj.name}/src/**.h",
+		"%{prj.name}/src/**.hpp",
 		"%{prj.name}/src/**.cpp"
 	}
 
 	includedirs
 	{
 		"%{prj.name}/vendor/flex-math/src",
+		"%{prj.name}/vendor/flex-render/src",
+		"%{prj.name}/vendor/glm/glm",
 		"%{prj.name}/vendor/spdlog/include"
-   }
-   
-   links {
-      "flex-math"
-   }
+	}
 
 	-- Windows options
 	filter "system:windows"
@@ -54,8 +52,7 @@ project "flex-engine"
 		defines
 		{
 			"FE_PLATFORM_WINDOWS",
-         "FE_BUILD_DLL",
-         "FM_PLATFORM_WINDOWS"
+			"FE_BUILD_DLL"
 		}
 
 		postbuildcommands
@@ -69,11 +66,10 @@ project "flex-engine"
 		defines "FE_DEBUG"
 		symbols "On" -- acts like -g gcc flag
 
-		
 	filter "configurations:Release"
 		defines "FE_RELEASE"
 		optimize "On"
-		
+
 	filter "configurations:Dist"
 		defines "FE_DIST"
 		optimize "On"
@@ -86,65 +82,23 @@ project "flex-engine"
 
 
 
-
-
 -- Flex Math ------------------------------- 
 project "flex-math"
 	location "flex-engine/vendor/flex-math"
-	kind "SharedLib"
+	kind "StaticLib"
 
 	language "C++"
-	
-	-- example : "bin/Debug-windows-x86_64/flex-math"
-	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
-	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
 	files
 	{
 		"%{prj.location}/src/**.h",
-      "%{prj.location}/src/**.cpp",
-      "%{prj.location}/**.hint",
 	}
-
 
 	-- Windows options
 	filter "system:windows"
 		cppdialect "C++17"
 		staticruntime "On"
 		systemversion "latest"
-		
-		defines
-		{
-			"FM_PLATFORM_WINDOWS",
-			"FM_BUILD_DLL"
-		}
-
-		postbuildcommands
-		{	-- will copy dll from engine build dir into sandbox build dir
-			("{COPY} %{cfg.buildtarget.relpath} %{wks.location}/bin/" .. outputdir .. "/Sandbox/*")
-		}
-
-
-	-- General build modes options for platforms
-	filter "configurations:Debug"
-		defines "FM_DEBUG"
-		symbols "On" -- acts like -g gcc flag
-
-		
-	filter "configurations:Release"
-		defines "FM_RELEASE"
-		optimize "On"
-		
-	filter "configurations:Dist"
-		defines "FM_DIST"
-		optimize "On"
-
-
-
-
-
-
-
 
 
 
@@ -165,20 +119,22 @@ project "Sandbox"
 	files
 	{
 		"%{prj.name}/src/**.h",
+		"%{prj.name}/src/**.hpp",
 		"%{prj.name}/src/**.cpp"
 	}
 
 	includedirs
 	{
-		"flex-engine/vendor/spdlog/include",
+		"flex-engine/src",
 		"flex-engine/vendor/flex-math/src",
-		"flex-engine/src"
+		"flex-engine/vendor/flex-render/src",
+		"flex-engine/vendor/glm/glm",
+		"flex-engine/vendor/spdlog/include",
 	}
 
 	links
 	{
-      "flex-engine",
-      "flex-math"
+      "flex-engine"
 	}
 
 	-- Windows options
@@ -189,8 +145,7 @@ project "Sandbox"
 		
 		defines
 		{
-         "FE_PLATFORM_WINDOWS",
-         "FM_PLATFORM_WINDOWS"
+         "FE_PLATFORM_WINDOWS"
 		}
 
 	-- General build modes options for platforms
